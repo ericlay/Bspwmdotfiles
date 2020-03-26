@@ -38,6 +38,7 @@ COLOR_DESKTOP_FG='#FFF6F9FF'
 COLOR_DESKTOP_BG="#FF292f34"
 DARKGREY="%{F#FF707880}"
 RED="%{F#FFA54242}"
+COLOR_TITLE_HACK="#FFdadde5"
 update_interval=3
 systemtray=0
 EOL
@@ -155,7 +156,7 @@ lime() {
  while read -r line ; do
     case "$line" in
         T*)
-            title="%{A:MonocleSwitcher:}${line#?}%{A}"
+            title="%{F$COLOR_TITLE_HACK}%{B$COLOR_DESKTOP_BG}${line#?}%{B-}%{F-}"
             ;;
 	C*)
             conky_infos="%{F$COLOR_FOCUSED_DESKTOP_FG}${line#?}"
@@ -242,6 +243,7 @@ i=1
 		-f "$thirdfont" -o 0\
 		-F $COLOR_FOCUSED_DESKTOP_FG \
 		-B $COLOR_DESKTOP_BG \
+		-U $COLOR_TITLE_HACK
 		-a 30 \
 		| while read line; do eval "$line"; done &
 #done
