@@ -12,7 +12,7 @@ iconfont="TerminessTTF Nerd Font:size=15:antialias=true"
 thirdfont="TerminessTTF Nerd Font:size=16:antialias=true"
 #thirdfont="Ionicons:size=16:antialias=false"
 gap=$(awk -F"=" '/gap=/ {print $2}' ~/.config/bspwm/bspwmrc)
-main_menu="rofimenu"
+main_menu="jgmenu_run"
 networkmenu="networkmenu.sh"
 wifi_indicator=true
 window_button="%{A:bspc node -c:} %{A}"
@@ -155,6 +155,9 @@ fi
 lime() {
  while read -r line ; do
     case "$line" in
+        M*)
+            switcher="%{A:MonocleSwitcher:}${line#?}%{A}"
+            ;;
         T*)
             title="%{F$COLOR_TITLE_HACK}%{B$COLOR_DESKTOP_BG}${line#?}%{B-}%{F-}"
             ;;
@@ -195,7 +198,7 @@ lime() {
             done
             ;;
     esac
-    printf "%s\n" "%{l}${logo}${desktops}${layout}%{F$COLOR_DESKTOP_FG}%{c}${title}%{r}%{F$COLOR_FOCUSED_DESKTOP_FG}${window_button}$volume_infos${conky_infos}"
+    printf "%s\n" "%{l}${logo}${desktops}${layout}%{m}%{F$COLOR_DESKTOP_FG}%{c}${title}%{r}%{F$COLOR_FOCUSED_DESKTOP_FG}${window_button}$volume_infos${conky_infos}"
  done
 }
 
@@ -243,7 +246,7 @@ i=1
 		-f "$thirdfont" -o 0\
 		-F $COLOR_FOCUSED_DESKTOP_FG \
 		-B $COLOR_DESKTOP_BG \
-		-U $COLOR_TITLE_HACK
+		-U $COLOR_TITLE_HACK \
 		-a 30 \
 		| while read line; do eval "$line"; done &
 #done
