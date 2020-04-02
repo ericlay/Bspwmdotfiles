@@ -25,9 +25,7 @@ battery_low_icon=
 time_icon=
 wired_icon="<->"
 disconnected_icon=
-#
 muted_icon=
-#
 unmuted_icon=
 tiling_icon=
 monocle_icon=
