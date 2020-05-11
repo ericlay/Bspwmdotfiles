@@ -8,10 +8,11 @@ ORANGE='\e[46m'
 NC='\e[0m'
 
 # Service messages section
+#==========================
 ERRORMSG="$RED Wrong.$NC"
 TRYAGAINMSG="$RED Enter desired option number and try again$NC"
 CHANGECOLOR="Enter the six character RGB hex value for the desired color\nPlease do not prepend value with #\nPlease do not use any quotation marks"
-CHANGEALPHA="Enter a two digit number from 00 -> 99\n 00 representing full transparency\n 99 representing full opacity"
+CHANGEALPHA="Enter a number from 00 -> 100\n 00 representing full transparency\n 100 representing full opacity"
 
 #Functions for altering configs
 #===============================
@@ -74,12 +75,14 @@ function panel_alpha {
 }
 
 function active_windows_alpha {
-	if [ "$alpha_wanted" = "1" ]; then
-		sed -i -e "/\bactive-opacity =/ s/=.*$/= $alpha_wanted;/" ~/.config/picom.conf
+	if [ "$alpha_wanted" = "100" ]; then
+		sed -i -e "/\bactive-opacity =/ s/=.*$/= 1;/" ~/.config/picom.conf
 	elif [ "$alpa_wanted" = "0" ]; then
 		sed -i -e "/\bactive-opacity =/ s/=.*$/= $alpha_wanted;/" ~/.config/picom.conf
-	elif [ "$alpha_wanted" -gt 1 ]; then
-		sed -i -e "/\bactive-opacity =/ s/=.*$/= 0.$alpha_wanted;/" ~/.config/picom.conf
+	elif [ "$alpha_wanted" -lt 10]; then
+		sed -i -e "/\bactive-opacity =/ s/=.*$/= 0.0$alpha_wanted;/" ~/.config/picom.conf
+	else
+		sed -i -e "/\bactive-opacity =/ s/=./*$/= 0.$alpha_wanted;/" ~/.config/picom.conf
 	fi
 	killall compton
 	compton -b
@@ -87,23 +90,25 @@ function active_windows_alpha {
 }
 
 function inactive_windows_alpha {
-	if [ "$alpha_wanted" = "1" ]; then
-		sed -i -e "/inactive-opacity =/ s/=.*$/= $alpha_wanted;/" ~/.config/picom.conf
+	if [ "$alpha_wanted" = "100" ]; then
+		sed -i -e "/inactive-opacity =/ s/=.*$/= 1;/" ~/.config/picom.conf
 	elif [ "$alpa_wanted" = "0" ]; then
 		sed -i -e "/inactive-opacity =/ s/=.*$/= $alpha_wanted;/" ~/.config/picom.conf
-	elif [ "$alpha_wanted" -gt 1 ]; then
-		sed -i -e "/inactive-opacity =/ s/=.*$/= 0.$alpha_wanted;/" ~/.config/picom.conf
+	elif [ "$alpha_wanted" -lt 10]; then
+		sed -i -e "/inactive-opacity =/ s/=.*$/= 0.0$alpha_wanted;/" ~/.config/picom.conf
+	else
+		sed -i -e "/inactive-opacity =/ s/=./*$/= 0.$alpha_wanted;/" ~/.config/picom.conf
 	fi
 	killall compton
 	compton -b
 	alpha_menu
 }
 
-#function menu_alpha {
-#	if [ "$alpha_wanted" = "0" ]; then
-#		
-#	
-#}
+function menu_alpha {
+	echo -e ""
+		
+	
+}
 
 #Functions for menu dialogs
 #===========================

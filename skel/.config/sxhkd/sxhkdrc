@@ -1,4 +1,4 @@
-﻿# bspwm hotkeys
+# bspwm hotkeys
 #
 # Cleanly quit bspwm
 super + shift + {q,r}
@@ -7,6 +7,17 @@ super + shift + {q,r}
 # Show keybindings
 super + F1
 	$TERMINAL -e keybindings.sh
+	
+# Show keybindings (rofi)
+super + F2
+   $TERMINAL -e show-help
+
+#####################################  LEFT FOR MAYBE USE LATER   
+# Show deadd-notification-center
+#super + v
+#  showDeadd   
+#####################################
+
 #
 # Window manipulation
 # ______________
@@ -232,7 +243,7 @@ mod5 + @button1
     MouseLaunch ; mygtkmenui -- .config/GTKmenu/LaunchMenu
 #	smartsplit ; dboxmenu
 
-# Spawn window manipulation menu
+# Spawn window manipulation menuq
 # Mod1 is alt
 #    BspwmWindowMenu
 mod1 + @button1
@@ -251,12 +262,21 @@ mod1 + @button1
 super + space
 	dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 14 -w 600 -y $PANEL_HEIGHT
 
-# Triggered by jus tapping super 
+# Triggered by just tapping LEFT super key
 super + shift + space
 	rofi -show
 
-#super + p
-#	dmenu_recent -h $PANEL_HEIGHT -fn 'xos4 Terminus:size=15' -i
+# Triggered by just tapping RIGHT super key
+super + shift + space + z
+	hidePanel
+
+# Launch fzf Pacsearch
+super + p
+	$TERMINAL -e pacfzf
+	
+# Launch fzf Yaysearch
+super + y
+	$TERMINAL -e yayfzf
 
 super + shift + Return
 	default-terminal
@@ -319,7 +339,7 @@ super + ctrl + r
 
 #edit this file
 alt + ctrl + space
-	$GUI_EDITOR ~/.config/sxhkd/sxhkdrc
+	xdg-open ~/.config/sxhkd/sxhkdrc
 
 # Toggle compositing
 super + ctrl + space

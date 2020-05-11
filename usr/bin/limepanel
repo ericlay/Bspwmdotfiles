@@ -12,7 +12,7 @@ iconfont="TerminessTTF Nerd Font:size=15:antialias=true"
 thirdfont="TerminessTTF Nerd Font:size=16:antialias=true"
 #thirdfont="Ionicons:size=16:antialias=false"
 gap=$(awk -F"=" '/gap=/ {print $2}' ~/.config/bspwm/bspwmrc)
-main_menu="jgmenu_run"
+main_menu="rofimenu"
 networkmenu="networkmenu.sh"
 wifi_indicator=true
 window_button="%{A:bspc node -c:} %{A}"
@@ -22,10 +22,12 @@ battery_full_icon=
 battery_draining_icon=
 battery_half_icon=
 battery_low_icon=
-time_icon=
-wired_icon="<->"
+#time_icon=
+wired_icon=
 disconnected_icon=
+#
 muted_icon=
+#
 unmuted_icon=
 tiling_icon=
 monocle_icon=
@@ -36,7 +38,7 @@ COLOR_DESKTOP_FG='#FFF6F9FF'
 COLOR_DESKTOP_BG="#FF292f34"
 DARKGREY="%{F#FF707880}"
 RED="%{F#FFA54242}"
-COLOR_TITLE_HACK="#FFdadde5"
+COLOR_TITLE="#FFdadde5"
 update_interval=3
 systemtray=0
 EOL
@@ -125,24 +127,24 @@ status()
 if [ -e /sys/class/power_supply/BAT*/ ]; then
 	if [ "$wifi_indicator" = true ]; then
 		while	:; do
-		echo "C%{A:"$networkmenu":}$(sigStrength)%{A}  %{A:dbright:}$(battery)%{A} $time_icon $(clock)"
+		echo "C%{A:"$networkmenu":}$(sigStrength)%{A}  %{A:dbright:}$(battery)%{A} $(clock)"
 		sleep "$update_interval"
 		done
 	else
 		while	:; do
-		echo "C%{A:dbright:}$(battery)%{A} $time_icon $(clock)"
+		echo "C%{A:dbright:}$(battery)%{A} $(clock)"
 		sleep "$update_interval"
 		done
 	fi
 else
 	if [ "$wifi_indicator" = true ]; then
 		while	:; do
-		echo "C%{A:"$networkmenu":}$(sigStrength)%{A} $time_icon $(clock)"
+		echo "C%{A:"$networkmenu":}$(sigStrength)%{A} $(clock)"
 		sleep "$update_interval"
 		done
 	else
 		while	:; do
-		echo "C$time_icon $(clock)"
+		echo "C$(clock)"
 		sleep "$update_interval"
 		done
 	fi
@@ -153,16 +155,16 @@ fi
 lime() {
  while read -r line ; do
     case "$line" in
-        M*)
+        S*)
             switcher="%{A:MonocleSwitcher:}${line#?}%{A}"
             ;;
         T*)
-            title="%{F$COLOR_TITLE_HACK}%{B$COLOR_DESKTOP_BG}${line#?}%{B-}%{F-}"
+           title="%{F$COLOR_TITLE}%{B$COLOR_DESKTOP_BG}${line#?}%{B-}%{F-}"
             ;;
-	C*)
+		C*)
             conky_infos="%{F$COLOR_FOCUSED_DESKTOP_FG}${line#?}"
             ;;
-	V*)
+		V*)
             volume_infos="${RA}%{F$COLOR_FOCUSED_DESKTOP_FG} ${line#?} "
             ;;
         W*)
@@ -189,14 +191,14 @@ lime() {
                           	M)	layout_ind=" $monocle_icon" ;;
                         	*)	layout_ind=" ${name}" ;;
                          esac
-                        layout="%{A:bspc desktop -l next:}${layout_ind}%{B-}%{F-}%{A}"
+                        layout="%{F$COLOR_DESKTOP_FG}%{B$COLOR_DESKTOP_BG}%{A:bspc desktop -l next:}${layout_ind}%{B-}%{F-}%{A}"
                         ;;
                 esac
                 shift
             done
             ;;
     esac
-    printf "%s\n" "%{l}${logo}${desktops}${layout}%{m}%{F$COLOR_DESKTOP_FG}%{c}${title}%{r}%{F$COLOR_FOCUSED_DESKTOP_FG}${window_button}$volume_infos${conky_infos}"
+    printf "%s\n" "%{l}${logo}${desktops}${layout}${switcher}%{F$COLOR_DESKTOP_FG}%{c}${title}%{r}%{F$COLOR_FOCUSED_DESKTOP_FG}${window_button}$volume_infos${conky_infos}"
  done
 }
 
@@ -217,8 +219,8 @@ i=1
 		sed -i "s/^max_geometry.*/max_geometry 0x$PANEL_HEIGHT/" ~/.stalonetrayrc
 		# Try to set position based on the resolution
 		if [ -z $tray_pos ]; then
-			monitor_widht=$(wattr w $(lsw -r))
-			tray_pos=$((1600 + $monitor_widht - 1920 ))
+			monitor_width=$(wattr w $(lsw -r))
+			tray_pos=$((1600 + $monitor_width - 1920 ))
 			echo 'tray_pos=1600' >> ~/.limepanelrc
 			sed -i "s/^geometry .*/geometry 1x1+$tray_pos+0/" ~/.stalonetrayrc
 		else
@@ -238,13 +240,13 @@ i=1
 		| lime \
 		| lemonbar \
 		-d \
-		-g x$panel_height \
+		-g 1680x$panel_height \
 		-f "$mainfont" -o -3\
-		-f "$iconfont" -o -2\
+		-f "$iconfont" -o -3\
 		-f "$thirdfont" -o 0\
 		-F $COLOR_FOCUSED_DESKTOP_FG \
 		-B $COLOR_DESKTOP_BG \
-		-U $COLOR_TITLE_HACK \
+		-U $COLOR_TITLE \
 		-a 30 \
 		| while read line; do eval "$line"; done &
 #done

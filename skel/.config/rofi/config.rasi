@@ -1,5 +1,5 @@
 configuration {
-	modi: "window,drun,clipboard:greenclip print";
+	modi: "window,Clipboard  :greenclip print,ssh,drun,run";
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
@@ -10,7 +10,7 @@ configuration {
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
-	show-icons: true;
+	show-icons: false;
 	terminal: "st";
 	ssh-client: "ssh";
 	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
@@ -29,11 +29,11 @@ configuration {
 /*	sorting-method: ;*/
 /*	case-sensitive: false;*/
 /*	cycle: true;*/
-	sidebar-mode: true;
+/*	sidebar-mode: true;*/
 /*	eh: 1;*/
 /*	auto-select: false;*/
 /*	parse-hosts: false;*/
-/*	parse-known-hosts: true;*/
+	parse-known-hosts: true;
 /*	combi-modi: "window,run";*/
 /*	matching: "normal";*/
 /*	tokenize: true;*/
@@ -63,11 +63,11 @@ configuration {
 /*	matching-negate-char: '-' /* unsupported */;*/
 /*	cache-dir: ;*/
 	pid: "/run/user/1000/rofi.pid";
-	display-window: "Windows";
+	display-window: "Windows  ";
 /*	display-windowcd: ;*/
-/*	display-run: ;*/
-/*	display-ssh: ;*/
-	display-drun: "Applications";
+	display-run: "Run Command  ";
+	display-ssh: "Recent SSH Connections  ";
+	display-drun: "Applications  ";
 /*	display-combi: ;*/
 /*	display-keys: ;*/
 /*	kb-primary-paste: "Control+V,Shift+Insert";*/

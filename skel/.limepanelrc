@@ -1,8 +1,8 @@
 #ionicons         
 panel_height='28'
-mainfont='TerminessTTF Nerd Font:size=18:antialias=true'
+mainfont='NotoSansMono Nerd Font:size=16:antialias=true'
 iconfont="TerminessTTF Nerd Font:size=15:antialias=true"
-thirdfont="TerminessTTF Nerd Font:size=16:antialias=true"
+thirdfont="TerminessTTF Nerd Font:size=15:antialias=true"
 #thirdfont="Ionicons:size=16:antialias=false"
 gap=2
 main_menu="rofimenu"
@@ -15,15 +15,15 @@ battery_full_icon=
 battery_draining_icon=
 battery_half_icon=
 battery_low_icon=
-time_icon=
-wired_icon="<->"
+#time_icon=
+wired_icon=
 disconnected_icon=
 #
 muted_icon=
 #
 unmuted_icon=
-#tiling_icon=
-#monocle_icon=
+tiling_icon=
+monocle_icon=
 title_length=100
 COLOR_FOCUSED_DESKTOP_FG='#FF70fbc9'
 COLOR_FOCUSED_DESKTOP_BG="#85222D32"
@@ -31,6 +31,6 @@ COLOR_DESKTOP_FG='#FF4eaf8c'
 COLOR_DESKTOP_BG="#85222D32"
 DARKGREY="%{F#FF707880}"
 RED="%{F#FFA54242}"
-COLOR_TITLE_HACK='#dadde5'
+COLOR_TITLE='#dadde5'
 update_interval=3
 systemtray=0
