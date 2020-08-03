@@ -41,7 +41,7 @@
                                       |  (Avoids splitting it automatically)
 		Super + Shift + q             |- Cleanly quit bspwm
 		Super + Shift + r			  |- Restart window manager
-		Super + ctrl +r               |- Reload bspwms configuration file
+		Super + ctrl +r               |- Edit configuration file
 	### Mousecommands ######################################################################
 		
 		Leftclick menus	              |- Close menu 
@@ -53,7 +53,6 @@
                               |  and spawn application menu
 	### Applications #######################################################################
 
-		Super + p                     |- Dmenu (Run applications)
 		Super + space                 |- Dmenu (Run applications)
 		Super + shift + b             |- Browser
 		Super + r                     |- File search
@@ -61,7 +60,13 @@
 		Super + shift + e             |- Explore files with Ranger   
 		Super + shift + Return        |- Terminal
 		Super + z                     |- Terminal
+		Super + p 					  |- Launch fzf style Pacsearch tool
+		Super + y					  |- Launch fzf style Yay search tool
 
+	### Super Keys #########################################################################
+		
+		LEFT Super Key				  |- Rofi
+		RIGHT Super Key				  |- Hide Limepanel
 
 
 	EOF

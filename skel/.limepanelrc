@@ -1,10 +1,10 @@
 #ionicons         
 panel_height='28'
-mainfont='NotoSansMono Nerd Font:size=16:antialias=true'
+mainfont='NotoSansMono Nerd Font:size=14:antialias=true'
 iconfont="TerminessTTF Nerd Font:size=15:antialias=true"
 thirdfont="TerminessTTF Nerd Font:size=15:antialias=true"
 #thirdfont="Ionicons:size=16:antialias=false"
-gap=2
+gap=3
 main_menu="rofimenu"
 networkmenu="networkmenu.sh"
 wifi_indicator=true
@@ -24,13 +24,13 @@ muted_icon=
 unmuted_icon=
 tiling_icon=
 monocle_icon=
-title_length=100
-COLOR_FOCUSED_DESKTOP_FG='#FF70fbc9'
-COLOR_FOCUSED_DESKTOP_BG="#85222D32"
-COLOR_DESKTOP_FG='#FF4eaf8c'
-COLOR_DESKTOP_BG="#85222D32"
+title_length=40
+COLOR_FOCUSED_DESKTOP_FG='#FF98ccbf'
+COLOR_FOCUSED_DESKTOP_BG="#852c2c2c"
+COLOR_DESKTOP_FG='#FF6a8e85'
+COLOR_DESKTOP_BG="#852c2c2c"
 DARKGREY="%{F#FF707880}"
 RED="%{F#FFA54242}"
-COLOR_TITLE='#dadde5'
+COLOR_TITLE='#dddddd'
 update_interval=3
 systemtray=0

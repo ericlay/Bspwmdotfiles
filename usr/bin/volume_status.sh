@@ -9,7 +9,7 @@ panel_volicon()
         if [ "$volStatus" = "yes" ]
                 then echo "$muted_icon"
         elif [ "$volStatus" = "no" ]
-                then echo "$unmuted_icon "
+                then echo "$unmuted_icon"
 		else echo " ?"
         fi
 }
@@ -28,7 +28,7 @@ panel_avolicon()
 }
 
 if [ $(pgrep pulseaudio >/dev/null) ]; then
-		echo "V"%{A:dvol:}%{A2:volume mute:}%{A5:volume down 1:}%{A4:volume up 1:}$(panel_volicon)%{A}%{A}%{A}%{A}> "/tmp/panel-fifo1" 
+		echo "V"%{A:dvol:}%{A2:volume mute:}%{A5:volume down 1:}%{A4:volume up 1:}$(panel_volicon)%{A}%{A}%{A}%{A} > "/tmp/panel-fifo1" 
 	else
-		echo "V"%{A:dvol:}%{A2:volume mute:}%{A5:volume down 1:}%{A4:volume up 1:}$(panel_avolicon)%{A}%{A}%{A}%{A}> "/tmp/panel-fifo1"
+		echo "V"%{A:dvol:}%{A2:volume mute:}%{A5:volume down 1:}%{A4:volume up 1:}$(panel_avolicon)%{A}%{A}%{A}%{A} > "/tmp/panel-fifo1"
 fi

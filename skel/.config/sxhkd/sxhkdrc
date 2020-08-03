@@ -1,6 +1,6 @@
 # bspwm hotkeys
 #
-# Cleanly quit bspwm
+# Cleanly quit/reset bspwm
 super + shift + {q,r}
 	bspc {quit 1 && pkill lemonpanel && pkill lemonbar,wm -r}
 
@@ -10,14 +10,12 @@ super + F1
 	
 # Show keybindings (rofi)
 super + F2
-   $TERMINAL -e show-help
-
-#####################################  LEFT FOR MAYBE USE LATER   
-# Show deadd-notification-center
-#super + v
-#  showDeadd   
-#####################################
-
+   keybindingsRofi
+   
+# Take screenshot
+super + shift + v
+   xfce4-screenshooter
+   
 #
 # Window manipulation
 # ______________
@@ -271,12 +269,12 @@ super + shift + space + z
 	hidePanel
 
 # Launch fzf Pacsearch
-super + p
-	$TERMINAL -e pacfzf
+super + shift + p
+	$TERMINAL -e fpf
 	
 # Launch fzf Yaysearch
-super + y
-	$TERMINAL -e yayfzf
+super + shift + y
+	$TERMINAL -e fpf -a
 
 super + shift + Return
 	default-terminal
@@ -286,17 +284,21 @@ super + z
 super + shift + z
 	open-terminal-here
 	
-super + r
-	rofi-finder.sh
-	
 super + w
-	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
-
+	/usr/bin/qtws /usr/share/qtws-apps/netflix/netflix.qtws --disable-seccomp-filter-sandbox --register-pepper-plugins="/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so; application/x-ppapi-widevine-cdm"
+	
 super + shift + b
 	$BROWSER
     		
 super + e
 	thunar
+
+#CUSTOM LAUNCHERS
+super + v
+	virt-manager
+
+super + s
+	spotify
 
 # Use slightly bigger font for ranger
 super + shift + e

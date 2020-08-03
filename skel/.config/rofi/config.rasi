@@ -1,5 +1,5 @@
 configuration {
-	modi: "window,Clipboard  :greenclip print,ssh,drun,run";
+	modi: "window,Clipboard  :clipmenu,file-browser,top,emoji,drun,run,ssh";
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
@@ -68,6 +68,9 @@ configuration {
 	display-run: "Run Command  ";
 	display-ssh: "Recent SSH Connections  ";
 	display-drun: "Applications  ";
+	display-file-browser: "Files  ";
+	display-top: "Tasks  ";
+	display-emoji: "  ";
 /*	display-combi: ;*/
 /*	display-keys: ;*/
 /*	kb-primary-paste: "Control+V,Shift+Insert";*/
@@ -140,6 +143,6 @@ configuration {
 /*	ml-row-up: "ScrollUp";*/
 /*	ml-row-down: "ScrollDown";*/
 	me-select-entry: "MouseSecondary";
-	me-accept-entry: "MouseDPrimary";
+	me-accept-entry: "MousePrimary";
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }

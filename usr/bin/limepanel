@@ -159,7 +159,10 @@ lime() {
             switcher="%{A:MonocleSwitcher:}${line#?}%{A}"
             ;;
         T*)
-           title="%{F$COLOR_TITLE}%{B$COLOR_DESKTOP_BG}${line#?}%{B-}%{F-}"
+            title="%{F$COLOR_TITLE}%{B$COLOR_DESKTOP_BG}${line#?}%{B-}%{F-}"
+            ;;
+        I*)
+            infos_spotify="%{F$COLOR_TITLE}%{B$COLOR_DESKTOP_BG}${line#?}%{B-}%{F-}"
             ;;
 		C*)
             conky_infos="%{F$COLOR_FOCUSED_DESKTOP_FG}${line#?}"
@@ -198,7 +201,7 @@ lime() {
             done
             ;;
     esac
-    printf "%s\n" "%{l}${logo}${desktops}${layout}${switcher}%{F$COLOR_DESKTOP_FG}%{c}${title}%{r}%{F$COLOR_FOCUSED_DESKTOP_FG}${window_button}$volume_infos${conky_infos}"
+    printf "%s\n" "%{l}${logo}${desktops}${layout}${switcher}%{F$COLOR_DESKTOP_FG}%{c}${title}%{r}$infos_spotify%{F$COLOR_FOCUSED_DESKTOP_FG}${window_button}$volume_infos${conky_infos}"
  done
 }
 
@@ -210,6 +213,11 @@ i=1
 	bspc subscribe > "$PANEL_FIFO$i" &
 	# Title
 	xtitle -sf 'T%s\n' -t $title_length > "$PANEL_FIFO$i" &
+	# Spotify Info
+	### NOTE TO SELF
+	### Below line is now longer needed with 'spotifyWatch' script
+	### But keep as reminder
+	#echo "I$(spotifyInfo)" > "$PANEL_FIFO$i" &
 	# system tray
 	if [ "$systemtray" -eq 1 ]; then
 		# If there is no configuration, add one
@@ -240,9 +248,9 @@ i=1
 		| lime \
 		| lemonbar \
 		-d \
-		-g 1680x$panel_height \
-		-f "$mainfont" -o -3\
-		-f "$iconfont" -o -3\
+		-g 1670x$panel_height+1365+5 \
+		-f "$mainfont" -o 0\
+		-f "$iconfont" -o 0\
 		-f "$thirdfont" -o 0\
 		-F $COLOR_FOCUSED_DESKTOP_FG \
 		-B $COLOR_DESKTOP_BG \

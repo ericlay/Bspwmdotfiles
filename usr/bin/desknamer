@@ -105,6 +105,8 @@ renameDesktop() {
 			*python3*) desktopCategories+="VirtualMachine" ;;
 			*gvncviewer*) desktopCategories+="VirtualMachine" ;;
 			*steam*) desktopCategories+="Game" ;;
+			*zoom*) desktopCategories+="zoom" ;;
+			*spotify*) desktopCategories+="spotify" ;;
 		esac
 
 		# name desktop based on found categories
@@ -144,6 +146,8 @@ renameDesktop() {
 			*IDE*|*TextEditor*) 	name="" ;;
 			*TerminalEmulator*)	name="" ;;
 			*VirtualMachine*) name="ﲾ" ;; 
+			*zoom*) name="" ;;
+			*spotify*) name="" ;;
 		esac
 
 		# fallback names
