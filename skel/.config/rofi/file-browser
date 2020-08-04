@@ -1,0 +1,4 @@
+#rofi file browser config
+
+dir "/home/ez/"
+show-hidden

@@ -1,0 +1,4 @@
+#!/bin/bash
+while true; do
+    echo "I$(spotifyInfo)" > /tmp/panel-fifo1
+done
