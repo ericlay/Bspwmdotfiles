@@ -29,7 +29,7 @@ configuration {
 }
 window {
     location:         north;
-    y-offset:         25px;
+    y-offset:         34px;
     width:            33%;
     background-color: @background;
     padding:          4px;

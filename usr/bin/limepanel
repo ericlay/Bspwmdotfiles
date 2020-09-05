@@ -58,7 +58,7 @@ while [ $(pgrep -cx bspc) -gt 0 ] ; do pkill -ox -9 bspc ; done ;
 while [ $(pgrep -cx stalonetray) -gt 0 ] ; do pkill -ox -9 stalonetray ; done ;
 
 
-trap '[ -e /tmp/panel-fifo1 ] && rm /tmp/panel-fifo1' INT TERM QUIT EXIT
+trap '[ -e /tmp/panel-fifo1 ] && rm /tmp/panel-fifo1' INT TERM QUIT EXIT
 
 
 logo="%{A:$main_menu:} $menu_icon %{A}"
